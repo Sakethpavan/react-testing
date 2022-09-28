@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main","dev" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main","dev" ]
 
 jobs:
   build:
@@ -31,5 +31,7 @@ jobs:
     - run: npm ci
     - run: |
         echo "The api key is ${{ env.ACCESS_KEY }}"
+        echo "The api key is ${{ secrets.ACCESS_KEY }}"
+        echo "The api key is ${{ secrets.BACKEND_URL }}"
     - run: npm run build --if-present
     - run: npm test
