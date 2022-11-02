@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-
+    environment: production
     runs-on: ubuntu-latest
     env:
       ACCESS_KEY : ${{ secrets.ACCESS_KEY }}
@@ -31,5 +31,7 @@ jobs:
     - run: npm ci
     - run: |
         echo "The api key is ${{ env.ACCESS_KEY }}"
+    - run: |
+        echo "The envi  is ${{ environment }}"    
     - run: npm run build --if-present
     - run: npm test
