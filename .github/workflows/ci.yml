@@ -16,6 +16,7 @@ jobs:
     env:
       ACCESS_KEY : ${{ secrets.ACCESS_KEY }}
       API_PATH: ${{ secrets.BACKEND_URL }}
+      environ: master
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
@@ -31,6 +32,6 @@ jobs:
     - run: npm ci
     - run: |
         echo "The api key is ${{ env.ACCESS_KEY }}"
-        echo "The envis is ${{ environment}}"
+        echo "The envis is ${{ env.environ }}"
     - run: npm run build --if-present
     - run: npm test
